@@ -1,11 +1,27 @@
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { getProducts } from "@/lib/api";
+import { useEffect, useState } from "react";
+import { Product } from "@/types";
 
-export default async function ProductsPage() {
-    const products = await getProducts();
+export default function ProductsPage() {
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getProducts()
+            .then((data) => {
+                setProducts(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Failed to load products:", error);
+                setLoading(false);
+            });
+    }, []);
 
     return (
         <div className="container mx-auto px-4 py-8 md:py-12">

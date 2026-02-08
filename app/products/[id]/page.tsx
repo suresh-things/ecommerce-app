@@ -1,3 +1,4 @@
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -6,15 +7,33 @@ import { ArrowLeft, Star, ShoppingCart, Truck, ShieldCheck, RefreshCw } from "lu
 import { Product } from "@/types";
 import AddToCartButton from "@/components/ui/AddToCartButton";
 import { getProduct } from "@/lib/api";
-import { notFound } from "next/navigation";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-// This is a Server Component
-export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const product = await getProduct(id);
+export default function ProductPage() {
+    const params = useParams();
+    const id = params.id as string;
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getProduct(id)
+            .then((data) => {
+                setProduct(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Failed to load product:", error);
+                setLoading(false);
+            });
+    }, [id]);
+
+    if (loading) {
+        return <div className="container mx-auto px-4 py-8">Loading...</div>;
+    }
 
     if (!product) {
-        notFound();
+        return <div className="container mx-auto px-4 py-8">Product not found</div>;
     }
 
     return (
