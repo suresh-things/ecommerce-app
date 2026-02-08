@@ -1,7 +1,21 @@
 
 import { Product } from "@/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+// Get the base URL for API calls
+function getBaseUrl() {
+    if (typeof window !== 'undefined') {
+        // Browser should use relative path
+        return '';
+    }
+    // SSR should use absolute URL
+    if (process.env.VERCEL_URL) {
+        return `https://${process.env.VERCEL_URL}`;
+    }
+    // Development fallback
+    return 'http://localhost:3000';
+}
+
+const API_URL = `${getBaseUrl()}/api`;
 
 export async function getProducts(category?: string): Promise<Product[]> {
     const url = category
