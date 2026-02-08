@@ -1,0 +1,53 @@
+
+import { Product } from "@/types";
+
+export const PRODUCTS: Product[] = [
+    {
+        id: "1",
+        name: "Wireless Noise Cancelling Headphones",
+        description: "Experience premium sound quality with our latest noise cancelling technology. Features include 30-hour battery life, quick charging, and adaptive sound control that adjusts to your environment. The soft ear cushions ensure long-lasting comfort for extended listening sessions.",
+        price: 299.99,
+        currency: "USD",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+        rating: 4.8,
+        reviews: 120,
+        category: "Electronics",
+        inStock: true,
+    },
+    {
+        id: "2",
+        name: "Smart Fitness Watch",
+        description: "Track your health and fitness goals with precision. Includes heart rate monitoring, GPS tracking, and a long-lasting battery life. Receive notifications and control your music directly from your wrist.",
+        price: 199.50,
+        currency: "USD",
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+        rating: 4.5,
+        reviews: 85,
+        category: "Wearables",
+        inStock: true,
+    },
+    {
+        id: "3",
+        name: "Ergonomic Office Chair",
+        description: "Work in comfort with our adjustable lumbar support chair. Designed to improve posture and reduce back pain during long work hours. Features a breathable mesh back and padded seat.",
+        price: 349.00,
+        currency: "USD",
+        image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=800&q=80",
+        rating: 4.7,
+        reviews: 210,
+        category: "Furniture",
+        inStock: true,
+    },
+    {
+        id: "4",
+        name: "4K Action Camera",
+        description: "Capture your adventures in stunning resolution. Waterproof up to 10 meters, this camera is perfect for surfing, skiing, and more. Comes with a variety of mounts and accessories.",
+        price: 149.99,
+        currency: "USD",
+        image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&q=80",
+        rating: 4.6,
+        reviews: 95,
+        category: "Cameras",
+        inStock: true,
+    },
+];
