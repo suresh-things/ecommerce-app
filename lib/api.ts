@@ -1,7 +1,7 @@
 
 import { Product } from "@/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 export async function getProducts(category?: string): Promise<Product[]> {
     const url = new URL(`${API_URL}/products`);
